@@ -1,0 +1,2 @@
+class Trigonometry:
+    pass

@@ -1,0 +1,2 @@
+class Bodmas:
+    pass

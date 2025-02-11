@@ -4,7 +4,7 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>903187bb-0751-48ee-9fc6-d88c38961b9c</ProjectGuid>
     <ProjectHome>.</ProjectHome>
-    <StartupFile>Calculator_App_Project_Backend_.py</StartupFile>
+    <StartupFile>main.py</StartupFile>
     <SearchPath>
     </SearchPath>
     <WorkingDirectory>.</WorkingDirectory>
@@ -21,7 +21,15 @@
     <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="Calculator_App_Project_Backend_.py" />
+    <Compile Include="bodmas.py" />
+    <Compile Include="calculus.py" />
+    <Compile Include="factorials.py" />
+    <Compile Include="gcd_and_lcm.py" />
+    <Compile Include="logarithms.py" />
+    <Compile Include="main.py" />
+    <Compile Include="nth_root.py" />
+    <Compile Include="number_systems.py" />
+    <Compile Include="Trigonometry.py" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\Python Tools\Microsoft.PythonTools.targets" />
   <!-- Uncomment the CoreCompile target to enable the Build command in
