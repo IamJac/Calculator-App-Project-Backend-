@@ -3,6 +3,9 @@ from math import inf
 import subprocess
 from bodmas import Bodmas
 from calculus import Differentiation,Integration
+from factorials import Factorial,Combinations,Permutations
+from gcd_and_lcm import Factors
+from nth_root import Roots
 # import os
 print(" ")
 print(" ")
@@ -112,7 +115,10 @@ while choice < inf:
             elif choice3==4:
                 try:
                     expression5 = str(input("input \n"))
-                except Exception as e:
+                    if type(expression5) is not str:
+                        raise ValueError("Invalid")
+                except ValueError as e:
+                    print(e)
                     continue
                 obj5 = Differentiation(expression5)
                 point = float(input("x_value-a point to evaluate the rate of change \n"))
@@ -125,12 +131,122 @@ while choice < inf:
             else:
                 print("Invalid input")
                 continue
+        continue
     elif choice == 3:
-        pass
+        print(" ")
+        print(" ")
+        print(" ")
+        print(" ")
+        print(" ")
+        print(" ")
+        print(" ")
+        print(" ")
+        print(" ")
+        print(" ")
+        print("                                                CHOOSE")
+        print("                                                1 - FACTORIAL")
+        print("                                                2 - PERMUTATIONS")
+        print("                                                3 - COMBINATIONS")
+        try:
+            input3=int(input("Input \n"))
+        except Exception as e:
+            print("Invalid")
+            continue
+        if input3==1:
+            try:
+                input10=int(input("Enter a positive integer to calculate its factorial \n"))
+            except Exception as e:
+                print("Invalid input")
+                subprocess.run("cls",shell=True)
+                continue
+            if input10<0:
+                print("Math error")
+                continue
+            else:
+                obj6=Factorial(input10)
+                result10=obj6.calculate_factorial()
+                print(F"{input10} factorial is {result10}")
+        elif input3==2:
+            try:
+                input11=int(input("Enter number of terms to be in each permutation \n"))
+                input12=int(input("How many positive integers do you have \n"))
+                if input11<0:
+                    raise ValueError("Integer is negative")
+                if input11 >input12:
+                    raise ValueError("Invalid")
+            except ValueError as err:
+                print(err)
+                subprocess.run("cls",shell=True)
+                continue
+            obj7=Permutations(input11,input12)
+            result11=obj7.determine_permutations()
+            print(F"Given {input12} terms and taking {input11} terms for each, we have {result11} permutations")
+        elif input3==3:
+            try:
+                input13 = int(input("Enter number of terms to be in each combination \n"))
+                input14 = int(input("How many positive integers do you have \n"))
+                if input13 < 0:
+                    raise ValueError("Integer is negative")
+                if input13 >input14:
+                    raise ValueError("Invalid")
+            except ValueError as err:
+                print(err)
+                subprocess.run("cls", shell=True)
+                continue
+            obj8 = Combinations(input13,input14)
+            result12 = obj8.determine_combinations()
+            print(F"Given {input14} terms and taking {input13} terms for each, we have {result12} combinations")
+        else:
+            print("Invalid")
+            continue
+
     elif choice == 4:
-        pass
+        print(" ")
+        print(" ")
+        print(" ")
+        print(" ")
+        print(" ")
+        print(" ")
+        print(" ")
+        print(" ")
+        print(" ")
+        print(" ")
+        print(" ")
+        print(" ")
+        print(" ")
+        print(" ")
+        print("                                                               CHOOSE")
+        print("                                                               1 - LCM")
+        print("                                                               2 - GCD")
+        try:
+            input20=int(input(" \n"))
+            #if type(input20) is not int
+        except Exception as e:
+            continue
+
+        num2=int(input("Enter the numbers that you have"))
+        list100=[]
+        for i in range(0,num2,1):
+            list100.append(int(input()))
+        obj10=Factors(list100)
+        if input20==1:
+            result16=obj10.least_common_factor()
+            print(F"The LCM of {list100} is {result16}")
+        elif input20==2:
+            result16 = obj10.greatest_common_divisor()
+
+            print(F"The GCD of {list100} is {result16}")
+        else:
+            print("Invalid input")
+            continue
+
     elif choice == 5:
-        pass
+        num20=float(input("Enter the number whose nth root is to be calculated \n"))
+        num21=float(input("Input the value of the root ie for square root input 2 \n"))
+        obj15=Roots(num20,num21)
+        result15=obj15.nth_root()
+        print(result15)
+        continue
     elif choice == 6:
         pass
     elif choice == 7:
