@@ -6,6 +6,8 @@ from calculus import Differentiation,Integration
 from factorials import Factorial,Combinations,Permutations
 from gcd_and_lcm import Factors
 from nth_root import Roots
+from logarithms import Logarithms
+from exceptions import Errors
 # import os
 print(" ")
 print(" ")
@@ -48,13 +50,13 @@ while choice < inf:
     print("                                                    4 - GCD AND LCM")
     print("                                                    5 - Nth ROOTS ie square root")
     print("                                                    6 - LOGARITHMS")
-    print("                                                    7 - TRIGONOMETRY")
-    print("                                                    8 - BINARY,HEXADECIMAL,OCTAL AND DECIMAL NUMBER SYSTEMS")
 
     try:
         choice = int(input("Your option \n"))
-    except Exception as e:
-        print("Wrong input type(input should be an option among the specified ones)")
+        if type(choice) is not int:
+            raise Errors("Not an integer")
+    except Errors as e:
+        print(e)
         continue
 
     if choice == 1:
@@ -69,6 +71,7 @@ while choice < inf:
     elif choice == 2:
         while choice3>(-inf):
             print("                                                   CHOOSE")
+            print("                                                    Input 100 to go back")
             print("                                                   1 - Definite Integration")
             print("                                                   2 - Indefinite Integration")
             print("                                                   3 - Symbolic Differentiation")
@@ -78,7 +81,10 @@ while choice < inf:
             if choice3==1:
                 try:
                     expression1 = str(input("input \n"))
-                except Exception as e:
+                    if type(expression1) is not str:
+                        raise Errors("Not a string")
+                except Errors as e:
+                    print(e)
                     continue
                 obj2 = Integration(expression1)
                 l = int(input("Lower bound \n"))
@@ -92,7 +98,10 @@ while choice < inf:
             elif choice3==2:
                 try:
                     expression2 = str(input("input \n"))
-                except Exception as e:
+                    if type(expression2) is not str:
+                        raise Errors("Not a string")
+                except Errors as e:
+                    print(e)
                     continue
                 obj3 = Integration(expression2)
                 result3 = obj3.indefinite_integration()
@@ -104,7 +113,10 @@ while choice < inf:
             elif choice3==3:
                 try:
                     expression3 = str(input("input \n"))
-                except Exception as e:
+                    if type(expression3) is not str:
+                        raise Errors("Not a string")
+                except Errors as e:
+                    print(e)
                     continue
                 obj4 = Differentiation(expression3)
                 result3 = obj4.symbolic_derivative()
@@ -128,6 +140,8 @@ while choice < inf:
                 subprocess.run('cls', shell=True)
                 # os.system("cls" if os.name=="nt" else "clear")
                 continue
+            elif choice3==100:
+                break
             else:
                 print("Invalid input")
                 continue
@@ -149,14 +163,18 @@ while choice < inf:
         print("                                                3 - COMBINATIONS")
         try:
             input3=int(input("Input \n"))
-        except Exception as e:
-            print("Invalid")
+            if type(input3) is not int:
+                raise Errors("Not an integer")
+        except Errors as e:
+            print(e)
             continue
         if input3==1:
             try:
                 input10=int(input("Enter a positive integer to calculate its factorial \n"))
-            except Exception as e:
-                print("Invalid input")
+                if type(input10) is not int:
+                    raise Errors("Not an integer")
+            except Errors as e:
+                print(e)
                 subprocess.run("cls",shell=True)
                 continue
             if input10<0:
@@ -220,8 +238,10 @@ while choice < inf:
         print("                                                               2 - GCD")
         try:
             input20=int(input(" \n"))
-            #if type(input20) is not int
-        except Exception as e:
+            if type(input20) is not int:
+                raise Errors("Not an integer")
+        except Errors as e:
+            print(e)
             continue
 
         num2=int(input("Enter the numbers that you have"))
@@ -248,11 +268,12 @@ while choice < inf:
         print(result15)
         continue
     elif choice == 6:
-        pass
-    elif choice == 7:
-        pass
-    elif choice == 8:
-        pass
+        num30 = float(input("Enter base of the logarithm to be evaluated \n"))
+        num31 = float(input("Input the mantissa \n"))
+        obj16 = Logarithms(num30, num31)
+        result16 = obj16.calculate_logarithm()
+        print(result16)
+        continue
     elif choice == 10:
         print(" ")
         print(" ")
@@ -271,8 +292,10 @@ while choice < inf:
         print("                                                                  2- NO")
         try:
             choice2 = int(input("Your choice \n"))
-        except Exception as e:
-            print("Invalid input type")
+            if type(choice2) is not int:
+                raise Errors("Not an integer")
+        except Errors as e:
+            print(e)
             continue
         if choice2 == 1:
             subprocess.run("cls", shell=True)

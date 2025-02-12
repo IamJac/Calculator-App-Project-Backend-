@@ -4,5 +4,8 @@ class Bodmas:
         self.input_str=input_string
 
     def bodmas_calculator(self):
-        result = sympify(self.input_str)
-        return result
+        try:
+            result = sympify(self.input_str)
+            return result
+        except Exception as e:
+            print(e)
